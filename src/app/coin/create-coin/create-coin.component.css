@@ -1,0 +1,10 @@
+.coin-name .ng-valid,
+.coin-code .ng-pristine,
+.coin-price .ng-intouched {
+    background-color: green;
+}
+.coin-name .ng-invalid,
+.coin-code .ng-dirty,
+.coin-price .ng-touched {
+    background-color: pink;
+}

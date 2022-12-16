@@ -1,0 +1,25 @@
+<h2>Create Coin Form</h2>
+<div>{{messageService.message}}</div>
+<div class="form-group">
+    <form (ngSubmit)="createCoin(coinForm)" #coinForm="ngForm">
+        <div class="coin-name">
+            <input type="text" placeholder="Coin Name" required name="coinName" [(ngModel)]="coin.name">
+        </div>
+        <div class="coin-code">
+            <input type="text" placeholder="Coin Code" name="coinCode" [(ngModel)]="coin.code">
+        </div>
+        <div class="coin-price">
+            <input type="number" placeholder="Coin Price" name="coinPrice" [ngModel]="coin.price"
+            (ngModelChange)="setCoinPrice($event)">
+        </div>
+       <select name="coinExchange" [(ngModel)]="coin.exchange">
+        <option *ngFor="let exchange of exchanges" [ngValue]="exchange">{{exchange}}</option>
+       </select>
+        <div class="coin-confirm">
+            <input type="checkbox" name="coinConfirm" [(ngModel)]="confirmed">
+            I confirm that the information provided above is accurate!
+        </div>
+        <button [disabled]="!confirmed" type="submit">Create</button>
+    </form>
+</div>
+<H4>Coin Name is {{coin | json}}</H4>

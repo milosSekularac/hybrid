@@ -1,0 +1,8 @@
+<div clas = "coin-container" *ngFor="let coin of coins;index as i">
+   <div class="name"> {{coin.name + '(' + coin.code + ')'}} </div>
+   <div class="price" [class]="coin.positiveChange() ? 'positive' : 'negative'">
+      $ {{coin.price}}
+   </div>
+   <button (click)="toggleFavorite($event, i)" *ngIf="!coin.favorite">Add to favorite</button>
+   <button (click)="toggleFavorite($event, i)" *ngIf="coin.favorite">Remove fromgenera favorite</button>
+</div>
