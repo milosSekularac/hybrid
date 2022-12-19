@@ -10,7 +10,7 @@ import { CoinService } from 'src/app/services/coin.service';
 export class CoinlistComponent implements OnInit {
 
   public coins:Coin[];
-  
+
   constructor(private coinService:CoinService) { }
 
   ngOnInit(): void  {
