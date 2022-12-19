@@ -1,1 +1,1 @@
-<app-coin-item *ngFor="let coin of coins" [coin]="coin"></app-coin-item>
+<app-coin-item *ngFor="let coin of coins$ | async" [coin]="coin"></app-coin-item>

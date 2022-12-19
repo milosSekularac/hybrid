@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Coin } from 'src/app/model/coin';
 import { CoinService } from 'src/app/services/coin.service';
 
@@ -9,15 +10,12 @@ import { CoinService } from 'src/app/services/coin.service';
 })
 export class CoinlistComponent implements OnInit {
 
-  public coins:Coin[];
+  public coins$:Observable<Coin[]>;
 
   constructor(private coinService:CoinService) { }
 
   ngOnInit(): void  {
-    this.coinService.getCoins()
-    .subscribe(coins=>{
-      this.coins = coins;
-    })
+   this.coins$ = this.coinService.getCoins();   
   }
 
  onToggleFavorite(coin:Coin){

@@ -1,5 +1,6 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http'
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { CoinItemComponent } from './coin/coin-item/coin-item.component';
@@ -19,7 +20,8 @@ import { MessageService } from './services/message.service';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     CoinService,

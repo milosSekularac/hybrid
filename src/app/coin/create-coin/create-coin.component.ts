@@ -29,18 +29,15 @@ export class CreateCoinComponent {
 createCoin (coinForm){
   console.log('Coin form',coinForm);
   if (coinForm.valid) {
-    let created = this.coinService.createCoin(this.coin);
-    if(created) {
-      this.messageService.message = 'Successfully created coin with coin code:'
-      + this.coin.code;
-      this.coin = new Coin('','',0,0,'BINANCE');
-    }else {
-      this.messageService.message = 'Coin with coin code: ' + this.coin.code
-      + 'alredy exist'
-    }
-  } else {
-    console.error('Coin form is in an invalid state')
+   this.coinService.createCoin(this.coin)
+    .subscribe((result:any) => {
+      this.messageService.message = result.msg;
+      this.coin = new Coin ('','',0,0,'BINANCE');}
+      ,(err) => {
+        this.messageService.message = err.msg;
+    });
+   }else {
+    console.error('Coin form is in invalid state');
+   } 
   }
-}
-
 }
