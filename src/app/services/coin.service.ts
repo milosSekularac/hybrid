@@ -30,7 +30,7 @@ import { Injectable } from '@angular/core';
         });
       }
       this.coins.push(coin);
-      return ObservableOf ({msg: 'Coin with code' + coin.code + 'successfuly created'});;
+      return ObservableOf ({msg: 'Coin with code ' + coin.code + ' successfuly created'});;
     }
 
     toggleFavorite(coin:Coin):Observable <Coin>{

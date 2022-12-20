@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { outputAst } from '@angular/compiler';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Coin } from 'src/app/model/coin';
+import { CoinService } from 'src/app/services/coin.service';
 
 @Component({
   selector: 'app-coin-item',
@@ -7,19 +9,20 @@ import { Coin } from 'src/app/model/coin';
   styleUrls: ['./coin-item.component.css']
 })
 export class CoinItemComponent  {
-    public coins:Array<Coin>;
-  constructor() { }
-  ngOnInit(): void {
-    this.coins = [ 
-      new Coin ('Chainlink','LINK' ,7,5,""),
-      new Coin ('Polkadot','DOT'   ,6,50,""),
-      new Coin ('MoonBeam','GLMR'  ,3,7,"")
-    ]
-    }; 
 
-toggleFavorite(event,index){
-  console.log('We are toggling the favorite state of coin',event,index);
-  this.coins[index].favorite = !this.coins[index].favorite;
-}
+  @Input() public coin: Coin; 
+
+  constructor (private coinService:CoinService ) {
   }
+
+  onToggleFavorite(event){
+  this.coinService.toggleFavorite(this.coin)
+  .subscribe ((coin) => this.coin.favorite = !this.coin.favorite);
+  }
+  
+
+}
+
+
+
 
